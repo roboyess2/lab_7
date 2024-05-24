@@ -1,5 +1,4 @@
 import tkinter as tk
-import tkinter as tk
 from tkinter import messagebox  # Добавьте импорт для messagebox
 
 def click(button_text):
@@ -45,14 +44,9 @@ def evaluate():
         entry.delete(0, tk.END)
         entry.insert(0, "Ошибка")
 
-def on_closing():
-    if messagebox.askokcancel("Завершить работу", "Завершить работу программы (Y / N)?"):
-        window.destroy()
-
 window = tk.Tk()
 window.title("Калькулятор")
 window.geometry("470x500")  # Увеличиваем размер окна
-window.protocol("WM_DELETE_WINDOW", on_closing)
 
 # Приветственное сообщение
 tk.Label(window, text="Добро пожаловать в Калькулятор!", font=('Arial', 20)).grid(row=0, column=0, columnspan=4)
@@ -86,5 +80,7 @@ for button in buttons:
 
 clear_button = tk.Button(window, text='C', width=5, height=2, font=('Arial', 20), command=clear)
 clear_button.grid(row=row_val, column=col_val)
+
+window.protocol("WM_DELETE_WINDOW", on_closing)
 
 window.mainloop()
