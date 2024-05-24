@@ -9,6 +9,16 @@ def click(button_text):
 def clear():
     entry.delete(0, tk.END)
 
+def square():
+    try:
+        expression = entry.get()
+        result = eval(expression) ** 2
+        entry.delete(0, tk.END)
+        entry.insert(0, result)
+    except:
+        entry.delete(0, tk.END)
+        entry.insert(0, "Ошибка")
+
 def evaluate():
     try:
         expression = entry.get()
