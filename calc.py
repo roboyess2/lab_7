@@ -11,9 +11,15 @@ def clear():
 
 def evaluate():
     try:
-        result = eval(entry.get())
+        expression = entry.get()
+        if '/0' in expression:
+            raise ZeroDivisionError
+        result = eval(expression)
         entry.delete(0, tk.END)
         entry.insert(0, result)
+    except ZeroDivisionError:
+        entry.delete(0, tk.END)
+        entry.insert(0, "на ноль делить нельзя")
     except:
         entry.delete(0, tk.END)
         entry.insert(0, "Ошибка")
